@@ -1,1 +1,38 @@
-<p>contacts-list works!</p>
+<div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contact of contacts">
+          <td>{{ contact.id }}</td>
+          <td>{{ contact.firstname }}</td>
+          <td>{{ contact.lastname }}</td>
+          <td>{{ contact.email }}</td>
+          <td>
+            <button
+              class="btn btn-primary btn-sm"
+              (click)="editContact.emit(contact)"
+            >
+              Edit
+            </button>
+          </td>
+          <td>
+            <button
+              class="btn btn-danger btn-sm"
+              (click)="deleteContact.emit(contact.id)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

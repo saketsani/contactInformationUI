@@ -1,1 +1,57 @@
-<p>contact-form works!</p>
+
+
+<!-- Modal Structure -->
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="contactModalLabel">Contact Form</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Contact Form -->
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <div class="form-group mb-2">
+            <label for="firstname">First Name</label>
+            <input
+              id="firstname"
+              formControlName="firstname"
+              class="form-control"
+              placeholder="Enter First Name"
+            />
+          </div>
+          <div class="form-group mb-2">
+            <label for="lastname">Last Name</label>
+            <input
+              id="lastname"
+              formControlName="lastname"
+              class="form-control"
+              placeholder="Enter Last Name"
+            />
+          </div>
+          <div class="form-group mb-2">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              formControlName="email"
+              type="email"
+              class="form-control"
+              placeholder="Enter Email"
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!contactForm.valid"
+          >
+            {{ contactForm.get('id')?.value ? 'Update' : 'Add' }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Button to open the modal -->
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#contactModal">
+    Add Contact
+  </button> 
