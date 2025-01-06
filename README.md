@@ -4,6 +4,10 @@ This is a contact managemet application built on angualar 18.
 
 To setup this project clone the repo and run the command "npm install" to get the node_modules which contains all the dependencies
 
+This Application has two child components contact-form and contacts-list and a parent component app.
+
+We are making all the api calls inside contact service and using this service as in requird from the components.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.2.
 
 ## Development server
