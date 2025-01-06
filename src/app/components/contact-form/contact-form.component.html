@@ -1,57 +1,56 @@
-
-
-<!-- Modal Structure -->
-<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="contactModalLabel">Contact Form</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- Contact Form -->
-        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-          <div class="form-group mb-2">
-            <label for="firstname">First Name</label>
+<div class="container mt-4 d-flex justify-content-center">
+    <!-- Add New Button -->
+    <button *ngIf="!showForm" class="btn btn-success mb-3" (click)="toggleForm()">Add New</button>
+  
+    <!-- Form Section -->
+    <div *ngIf="showForm" class="card shadow-sm" style="max-width: 100%;">
+      <div class="card-body p-3">
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="d-flex align-items-center flex-wrap gap-3">
+          <!-- First Name -->
+          <div class="d-flex align-items-center">
+            <label for="firstname" class="me-2 mb-0">First Name:</label>
             <input
               id="firstname"
               formControlName="firstname"
-              class="form-control"
+              class="form-control form-control-sm"
+              style="width: 150px;"
               placeholder="Enter First Name"
             />
           </div>
-          <div class="form-group mb-2">
-            <label for="lastname">Last Name</label>
+          <!-- Last Name -->
+          <div class="d-flex align-items-center">
+            <label for="lastname" class="me-2 mb-0">Last Name:</label>
             <input
               id="lastname"
               formControlName="lastname"
-              class="form-control"
+              class="form-control form-control-sm"
+              style="width: 150px;"
               placeholder="Enter Last Name"
             />
           </div>
-          <div class="form-group mb-2">
-            <label for="email">Email</label>
+          <!-- Email -->
+          <div class="d-flex align-items-center">
+            <label for="email" class="me-2 mb-0">Email:</label>
             <input
               id="email"
               formControlName="email"
               type="email"
-              class="form-control"
+              class="form-control form-control-sm"
+              style="width: 200px;"
               placeholder="Enter Email"
             />
           </div>
+          <!-- Buttons -->
           <button
             type="submit"
-            class="btn btn-success"
+            class="btn btn-success btn-sm"
             [disabled]="!contactForm.valid"
           >
             {{ contactForm.get('id')?.value ? 'Update' : 'Add' }}
           </button>
+          <button type="button" class="btn btn-secondary btn-sm" (click)="toggleForm()">Cancel</button>
         </form>
       </div>
     </div>
   </div>
-</div>
-<!-- Button to open the modal -->
-<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#contactModal">
-    Add Contact
-  </button> 
+  

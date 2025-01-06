@@ -12,9 +12,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './contact-form.component.css'
 })
 export class ContactFormComponent {
+  showForm: boolean = false; 
   contactForm: FormGroup;
   @Input() set contact(data: Contact | null) {
     if (data) {
+      this.showForm = true;
       this.contactForm.patchValue(data);
     } else {
       this.contactForm.reset();
@@ -31,7 +33,12 @@ export class ContactFormComponent {
       email: ['', [Validators.required, Validators.email]],
     });
   }
- 
+  toggleForm(): void {
+    this.showForm = !this.showForm;
+    if (this.showForm) {
+      this.contactForm.reset();
+    }
+  }
   ngOnInit(): void {}
 
   onSubmit(): void {
@@ -61,6 +68,7 @@ export class ContactFormComponent {
         );
       
       }
+      this.toggleForm();
       this.contactForm.reset();
     }
   }
